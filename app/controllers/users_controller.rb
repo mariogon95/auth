@@ -14,6 +14,7 @@
     @user["email"] = params["user"]["email"]
     @user["password"] = BCrypt::Password.create(params["user"]["password"])
     @user.save
+    session["user_id"] = @user["id"]
     redirect_to "/users/#{@user["id"]}"
   end
 end
